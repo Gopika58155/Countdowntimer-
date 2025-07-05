@@ -1,0 +1,22 @@
+import time
+
+def countdown_timer(seconds):
+    while seconds > 0:
+        mins, secs = divmod(seconds, 60)
+        timer = '{:02d}:{:02d}'.format(mins, secs)
+        print(timer, end="\r")  # \r moves the cursor to the beginning of the line
+        time.sleep(1)
+        seconds -= 1
+    print("Time's up!")
+
+if __name__ == "__main__":
+    while True:
+        try:
+            duration = int(input("Enter the countdown duration in seconds: "))
+            if duration <= 0:
+                print("Please enter a positive number.")
+            else:
+                countdown_timer(duration)
+                break
+        except ValueError:
+            print("Invalid input. Please enter a whole number.")
